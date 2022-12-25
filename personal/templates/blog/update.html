@@ -49,18 +49,14 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <form class="float-right" action="{{ url_for('blog.delete', id=post['id']) }}"
-                                  method="post">
-                                <input class="btn btn-danger" type="submit" value="Delete"
-                                       onclick="return confirm('Are you sure?');">
-                            </form>
+                            <a onclick="return confirm('Are you sure?');" href="#" class="delete-post btn btn-danger" data-id="{{ post['id'] }}">Delete</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            {% if images|length > 1 %}
+            {% if images|length > 0 %}
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Attachments</h5>
@@ -102,9 +98,24 @@
 
              $.ajax({
               type: "POST",
-              url: $SCRIPT_ROOT + '/blog/' + post_id + '/make_public',
+              url: '/blog/' + post_id + '/make_public',
               success: (function(res) {
                 console.log(res);
+              })
+            });
+        });
+
+        $(".delete-post").click(function(){
+            let post_id = $(this).attr("data-id");
+
+             $.ajax({
+              type: "POST",
+              url: '/blog/' + post_id + '/delete',
+              success: (function(res) {
+                console.log(res);
+                if (res.success == true) {
+                    window.location.href = res.route;
+                }
               })
             });
         });

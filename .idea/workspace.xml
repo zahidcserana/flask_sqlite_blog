@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="04371be9-29d0-4163-a9a3-44ba20fc9b80" name="Changes" comment="" />
+    <list default="true" id="04371be9-29d0-4163-a9a3-44ba20fc9b80" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal/templates/pagination.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/personal/templates/pagination_old.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/personal.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/instance/personal.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/personal.egg-info/SOURCES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/blog.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal/blog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/101.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/102.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/71Xi4xSbTVS._SL1200_.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/Screenshot_from_2022-10-18_17-43-20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/Screenshot_from_2022-10-24_13-24-00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/Screenshot_from_2022-10-25_12-27-29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/Zahid-designstyle-smoothie-m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/a99bb95f485457c363a0c393f976fae0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/abc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/default.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/ecc0ec9105c91da73fce639e877d9e5a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/static/uploads/s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal/templates/blog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/templates/blog/self.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal/templates/blog/self.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/templates/blog/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal/templates/blog/update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal/templates/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/personal/templates/layout/header.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,16 +60,16 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/www/Practice/Python/Flask/personal/personal/templates/blog&quot;
+    &quot;last_opened_file_path&quot;: &quot;/var/www/html/Development/Personal/personal/templates&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/personal/templates" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/personal/templates/blog" />
       <recent name="$PROJECT_DIR$/personal/templates/auth" />
-      <recent name="$PROJECT_DIR$/personal/templates" />
       <recent name="$PROJECT_DIR$/personal/templates/user" />
-      <recent name="$PROJECT_DIR$/personal/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/personal/templates/layout" />

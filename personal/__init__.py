@@ -2,6 +2,10 @@ import functools
 import os
 
 from flask import Flask, render_template, g, url_for, redirect
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+session_maker = sessionmaker(bind=create_engine('mysql+pymysql://root:tr$cKy22@localhost/personal'))
 
 
 def create_app(test_config=None):
@@ -42,7 +46,6 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/')
-    @login_required
     def home():
         return render_template('home.html')
 

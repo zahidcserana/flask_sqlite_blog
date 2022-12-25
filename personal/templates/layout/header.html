@@ -194,12 +194,14 @@
                             <span>My Profile</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="{{ url_for('blog.blog_self', user_uuid=g.user['uuid']) }}">
-                            <i class="bi bi-person"></i>
-                            <span>My Blog</span>
-                        </a>
-                    </li>
+                    {% if g.user %}
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ url_for('blog.blog_self', user_uuid=g.user['uuid']) }}">
+                                <i class="bi bi-person"></i>
+                                <span>My Blog</span>
+                            </a>
+                        </li>
+                    {% endif %}
                     <li>
                         <hr class="dropdown-divider">
                     </li>
