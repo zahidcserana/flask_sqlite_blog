@@ -1,0 +1,99 @@
+{% extends 'layout/master.jinja2' %}
+{% import 'forms.html' as forms %}
+
+{% block title %}{{ post['title'] }}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <h5 class="card-header">
+                    <span>Blog Details</span>
+                    <a class="float-right action btn btn-secondary" href="{{ url_for('blog.index') }}">
+                        <i class="bi bi-chevron-left ms-auto"></i> Back
+                    </a>
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post['title'] }}</h5>
+                    <p>{{ post['body'] | safe }}</p>
+
+                    <a class="action" href="{{ url_for('blog.post_like', post_id=post['id']) }}">
+                        {% if like %}
+                        <i class="fa bi-hand-thumbs-down-fill"><small>({{ like_total }})</small></i>
+                        {% else %}
+                        <i class="bi bi-hand-thumbs-up-fill"><small>({{ like_total }})</small></i>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+
+            {% if images|length > 1 %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Attachments:</h5>
+                    <div class="row">
+                        {% for image in images %}
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href="{{ url_for('static', filename = 'uploads/'+image.name) }}" target="_blank">
+                                    <img src="{{ url_for('static', filename = 'uploads/'+image.name) }}"
+                                         alt="{{ image.name }}"
+                                         style="width:100%">
+                                    <div class="caption">
+                                        <p class="text-center">
+                                        <form action="{{ url_for('blog.image_delete', post_id=image.post_id, image_id=image.id) }}"
+                                              method="post">
+                                            <input class="btn btn-danger" type="submit" value="Remove"
+                                                   onclick="return confirm('Are you sure?');">
+                                        </form>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="post-comment">
+                <form action="{{ url_for('blog.post_comment', post_id=post['id']) }}" method="post">
+                    <label class="float-left" for="body"><strong>Comment: ({{ post_comments | length }})</strong> &nbsp;</label>
+
+                    {{ forms.textarea('body', request.form['body'], 2, 100) }}
+                    <input class="float-right btn btn-success" type="submit" value="Save">
+                </form>
+            </div>
+
+            {% for comment in post_comments %}
+            <div>
+                <div>
+                    <h5>
+                        <strong>{{ comment['username'] }}</strong>
+                    </h5>
+                    <p class="body">{{ comment['body'] }}</p>
+                    <div class="about">
+                        <small>{{ comment['created'].strftime('%Y-%m-%d') }}</small>
+
+                        {% if current_user.id == comment['user_id'] %}
+                        <form class="float-right"
+                              action="{{ url_for('blog.comment_delete', post_id=comment['post_id'], comment_id=comment['id']) }}"
+                              method="post">
+                            <button onclick="return confirm('Are you sure?');" type="submit" class="btn btn-danger"><i
+                                    class="bi bi-exclamation-octagon"></i></button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if not loop.last %}
+            <hr>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

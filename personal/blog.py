@@ -9,7 +9,7 @@ from sqlalchemy import exc
 from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 
-from models import Post, PostImage, PostLike, PostComment, UserModel
+from personal.models import Post, PostImage, PostLike, PostComment, UserModel
 from personal.auth import login_required, session_maker
 
 bp = Blueprint('blog', __name__)

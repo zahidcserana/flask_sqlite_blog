@@ -1,0 +1,50 @@
+{% extends 'auth/layout.jinja2' %}
+
+{% block title %}
+<div class="pt-4 pb-2">
+    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+    <p class="text-center small">Enter your username & password to login</p>
+</div>
+{% endblock %}
+
+{% block content %}
+ <form class="row g-3 needs-validation" method="POST" action="/login">
+      {{ form.csrf_token }}
+    <div class="col-12">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(placeholder='youremail@example.com', class="form-control") }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+
+    <div class="col-12">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+    </div>
+
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="submit-button">
+        {{ form.submit(class="btn btn-primary w-100") }}
+      </div>
+    </div>
+    <div class="col-12">
+        <p class="small mb-0">Don't have account? <a href="{{ url_for('auth_bp.signup') }}">Create an account</a></p>
+    </div>
+</form>
+{% endblock %}

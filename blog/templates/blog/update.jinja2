@@ -1,0 +1,124 @@
+{% extends 'layout/master.jinja2' %}
+
+{% block title %}{{ post['title'] }}{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <h5 class="card-header">
+                    <span>Blog Edit</span>
+                    <a class="float-right action btn btn-secondary" href="{{ url_for('blog.index') }}">
+                        <i class="bi bi-chevron-left ms-auto"></i> Back
+                    </a>
+                </h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post['title'] }}
+                        <div class="float-right">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="make-public" data-id="{{ post['id'] }}"   {% if post.is_public %}checked{% endif %}>
+                                <label class="form-check-label" for="make-public">
+                                    Make public
+                                </label>
+                            </div>
+                        </div>
+                    </h5>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="title" id="title"
+                                       value="{{ request.form['title'] or post['title'] }}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="body" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea class="tinymce-editor" name="body" id="body">
+                                    {{ request.form['body'] or post['body'] }}
+                                  </textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="file" class="col-sm-2 col-form-label">File Upload</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="file" id="file" name="file">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a onclick="return confirm('Are you sure?');" href="#" class="delete-post btn btn-danger" data-id="{{ post['id'] }}">Delete</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% if images|length > 0 %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Attachments</h5>
+                    <div class="row">
+                        {% for image in images %}
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href="{{ url_for('static', filename = 'uploads/'+image.name) }}" target="_blank">
+                                    <img src="{{ url_for('static', filename = 'uploads/'+image.name) }}"
+                                         alt="{{ image.name }}"
+                                         style="width:100%">
+                                    <div class="caption">
+                                        <p class="text-center">
+                                        <form action="{{ url_for('blog.image_delete', post_id=image.post_id, image_id=image.id) }}"
+                                              method="post">
+                                            <input class="btn btn-danger" type="submit" value="Remove"
+                                                   onclick="return confirm('Are you sure?');">
+                                        </form>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(function() {
+         $("#make-public").click(function(){
+            let post_id = $(this).attr("data-id");
+
+             $.ajax({
+              type: "POST",
+              url: '/blog/' + post_id + '/make_public',
+              success: (function(res) {
+                console.log(res);
+              })
+            });
+        });
+
+        $(".delete-post").click(function(){
+            let post_id = $(this).attr("data-id");
+
+             $.ajax({
+              type: "POST",
+              url: '/blog/' + post_id + '/delete',
+              success: (function(res) {
+                console.log(res);
+                if (res.success == true) {
+                    window.location.href = res.route;
+                }
+              })
+            });
+        });
+    });
+</script>
+{% endblock %}

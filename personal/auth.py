@@ -7,7 +7,7 @@ from flask import (
 from sqlalchemy import create_engine, exc
 from sqlalchemy.orm import sessionmaker
 
-from models import UserModel
+from personal.models import UserModel
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
