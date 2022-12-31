@@ -1,2 +1,4 @@
 /venv
 /.idea
+/blog/static/uploads/*
+/personal/static/uploads/*
